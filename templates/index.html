@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="shortcut icon" href="#">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+<script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  
+  <meta charset="utf-8">
+  <title>ML Telco churn</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+    <div class = "container">
+        <h1 style="text-align: center">Predict customer churn for a TSP</h1>
+    </div>
+<div class = "login">
+<form class="form-inline" style="text-align: center" action = "{{url_for('result')}}"method = "post">
+    
+    <label for="OLDEST_BUCKET_NEW">OLDEST_BUCKET_NEW</label>
+        <select id="OLDEST_BUCKET_NEW" name="OLDEST_BUCKET_NEW">
+            <option></option>
+            <option value="0">BUCKET 0-30</option>
+            <option value="1">BUCKET 121-150</option>
+            <option value="2">BUCKET 151-180</option>
+            <option value="3">BUCKET 181+</option>
+            <option value="4">BUCKET 31-60</option>
+            <option value="5">BUCKET 61-90</option>
+            <option value="6">BUCKET 91-120</option>
+        </select>
+    <br>
+    <br>
+    <label for="AON BKT">AON BKT</label>
+        <select id="AON BKT" name="AON BKT">
+            <option></option>
+            <option value="0">0--3</option>
+            <option value="1">10--12</option>
+            <option value="2">13--24</option>
+            <option value="3">4--6</option>
+            <option value="4">7--9</option>
+            <option value="5">>24</option>
+        </select>
+    <br>
+    <br>
+    <label for="NET_BAD_DEBT">NET_BAD_DEBT</label>
+            <input type="text" id="NET_BAD_DEBT" name="NET_BAD_DEBT" placeholder="NET_BAD_DEBT" required = "required">
+    <br>
+    <br>
+    <label for="BILLCYCLE">BILLCYCLE</label>
+            <input type="text" id="BILLCYCLE" name="BILLCYCLE" placeholder="BILLCYCLE" required = "required">
+    <br>
+    <br>
+    <label for="CREDITSTATUS">CREDITSTATUS</label>
+        <select id="CREDITSTATUS" name="CREDITSTATUS">
+            <option></option>
+            <option value="0">HR</option>
+            <option value="1">HRA</option>
+            <option value="2">HRB</option>
+            <option value="3">HRC</option>
+            <option value="4">LR</option>
+            <option value="5">LRA</option>
+            <option value="6">LRB</option>
+            <option value="7">LRC</option>
+            <option value="8">MR</option>
+            <option value="9">MRA</option>
+            <option value="10">MRB</option>
+            <option value="11">MRC</option>
+            <option value="12">PD</option>
+            <option value="13">PV</option>
+            <option value="14">VL</option>
+            <option value="15">VLB</option>
+            <option value="16">VLC</option>
+            <option value="17">VR</option>
+            <option value="18">VRA</option>
+            <option value="19">VRB</option>
+            <option value="20">VRC</option>
+            <option value="21">vr</option>
+                        
+        </select>
+    <br>
+    <br>
+    <label for="CREDIT LIMIT">CREDIT LIMIT</label>
+            <input type="text" id="CREDIT LIMIT" name="CREDIT LIMIT" placeholder="CREDIT LIMIT" required = "required">
+    <br>
+    <br> 
+    <label for="TOTAL PAYMENTST">TOTAL PAYMENTS</label>
+            <input type="text" id="TOTAL PAYMENTS" name="TOTAL PAYMENTS" placeholder="TOTAL PAYMENTS" required = "required">
+    <br>
+    <br>     
+    <label for="NO OF INVOICES GENERATED">NO OF INVOICES GENERATED</label>
+            <input type="text" id="NO OF INVOICES GENERATED" name="NO OF INVOICES GENERATED" placeholder="NO OF INVOICES GENERATED" required = "required">
+    <br>
+    <br>   
+    
+    <label for="BAD_DEBT_FLAG">BAD_DEBT_FLAG</label>
+        <select id="BAD_DEBT_FLAG" name="BAD_DEBT_FLAG">
+            <option></option>
+            <option value="0">BAD</option>
+            <option value="1">GOOD</option>
+        </select>
+    <br>
+    <br>
+    <label for="MNP FLAG">MNP FLAG</label>
+        <select id="MNP FLAG" name="MNP FLAG">
+            <option></option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+         </select>
+    <br>
+    <br>
+    <label for="SUMMARY_BILL_FLAG">SUMMARY_BILL_FLAG</label>
+        <select id="SUMMARY_BILL_FLAG" name="SUMMARY_BILL_FLAG">
+            <option></option>
+            <option value="0">NO</option>
+            <option value="1">YES</option>
+        
+        </select>
+    <br>
+    <br>
+    <label for="CNC GROUP">CNC GROUP</label>
+        <select id="CNC GROUP" name="CNC GROUP">
+            <option></option>
+            <option value="0">INDIVIDUAL</option>
+            <option value="1">IOIP</option>
+            <option value="2">VSME</option>   
+        </select> 
+    <br>
+    <br>
+    <label for="BRANCH">BRANCH</label>
+        <select id="BRANCH" name="BRANCH">
+            <option></option>
+            <option value="0">CALICUT</option>
+            <option value="1">KANNUR</option>
+            <option value="2">KASARGOD</option>
+        </select>
+    <br>
+    <br>
+    <label for="CATEGORY">CATEGORY</label>
+        <select id="CATEGORY" name="CATEGORY">
+            <option></option>
+            <option value="0">BRONZE</option>
+            <option value="1">COPPER</option>
+            <option value="2">DIAMOND</option>
+            <option value="3">GOLD</option>
+            <option value="4">MERCURY</option>
+            <option value="5">NURSERY</option>
+            <option value="6">PLATINUM</option>
+            <option value="7">SILVER</option>
+            <option value="8">TITANIUM</option>
+        </select>
+    <br>
+    <br>
+    <label for="SEG TYPE">SEG TYPE</label>
+        <select id="SEG TYPE" name="SEG TYPE">
+            <option></option>
+            <option value="0">NON-PREMIUM</option>
+            <option value="1">PREMIUM</option>
+            
+        </select>
+    <br>
+    <br>
+    <label for="CUSTOMER TYPE">CUSTOMER TYPE</label>
+        <select id="CUSTOMER TYPE" name="CUSTOMER TYPE">
+            <option></option>
+            <option value="0">HNI</option>
+            <option value="1">NORMAL</option>
+            <option value="2">VIP</option>
+        </select>
+    <br>
+    <br>
+    <label for="DUNNING TYPE">DUNNING TYPE</label>
+        <select id="DUNNING TYPE" name="DUNNING TYPE">
+            <option></option>
+            <option value="0">AUTO DUNN</option>
+            <option value="1">MANUAL DUNNe</option>
+            <option value="2">Yes</option>
+        </select>
+        
+    <br>
+    <br>
+    <label for="NOD">NOD</label>
+            <input type="text" id="NOD" name="NOD" placeholder="NOD" required = "required">
+    <br>
+    <br> 
+    <label for="PLAN RENTAL">PLAN RENTAL</label>
+            <input type="text" id="PLAN RENTAL" name="PLAN RENTAL" placeholder="PLAN RENTAL" required = "required">
+    <br>
+    <br>
+    
+
+    
+    <button type = "submit" class = "btn-btn-primary">Predict</button>
+            <br>
+</form>
+</div>
+            <br>
+            <br>
+
+        {{prediction_text}}
+    </div>
+</body>
+</html>
